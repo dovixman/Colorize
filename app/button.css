@@ -1,13 +1,32 @@
-button {
+button,
+input {
   height: 30px;
   width: 30px;
   outline: none;
   margin: 10px;
   border: none;
   border-radius: 2px;
+  text-align: center;
+  cursor: pointer;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-button.current {
-  box-shadow: 0 0 0 2px white,
-              0 0 0 4px black;
+button.dark::before {
+  font-family: fontAwesome;
+  content: "\f042";
+}
+
+button.light::before {
+  font-family: fontAwesome;
+  content: "\f185";
+}
+
+button.read-mode::before {
+  font-family: fontAwesome;
+  content: "\f518";
+}
+
+button.current,
+input.current {
+  box-shadow: 0 0 0 2px white, 0 0 0 4px black;
 }
