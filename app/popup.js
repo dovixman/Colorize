@@ -1,7 +1,19 @@
 // Initialize button with user's preferred color
 let page = document.getElementById("body");
 let selectedClassName = "current";
-const presetButtonColors = ["#3aa757", "#e8453c", "#f9bb2d", "#4688f1"];
+const presetButtonColors = [
+    {
+        color: "#DEE4E7",
+        icon: "light"
+    },
+    {
+        color: "#f1ece8",
+        icon: "read-mode"
+    },
+    {
+        color: "#37474F",
+        icon: "dark"
+    }];
 
 // When the button is clicked, inject setPageBackgroundColor into current page
 async function setBgColor() {
@@ -37,11 +49,12 @@ function constructOptions(buttonColors) {
         for (let buttonColor of buttonColors) {
             // …create a button with that color…
             let button = document.createElement("button");
-            button.dataset.color = buttonColor;
-            button.style.backgroundColor = buttonColor;
+            button.dataset.color = buttonColor.color;
+            button.style.backgroundColor = "rgba(10,10,10,0.5)";
+            button.classList.add(buttonColor.icon);
 
             // …mark the currently selected color…
-            if (buttonColor === currentColor) {
+            if (buttonColor.color === currentColor) {
                 button.classList.add(selectedClassName);
             }
 
@@ -50,13 +63,6 @@ function constructOptions(buttonColors) {
             page.appendChild(button);
         }
     });
-    let colorPicker = document.createElement("input");
-    colorPicker.type = "color";
-    colorPicker.id = "html5colorpicker";
-    colorPicker.onchange = "";
-    colorPicker.value = "#ff0000";
-    colorPicker.addEventListener("change", handleButtonClick);
-    page.appendChild(colorPicker);
 }
 
 // The body of this function will be executed as a content script inside the
@@ -66,6 +72,14 @@ function setPageBackgroundColor() {
         document.body.style.backgroundColor = color;
     });
 }
+
+    let colorPicker = document.createElement("input");
+    colorPicker.type = "color";
+    colorPicker.id = "html5colorpicker";
+    colorPicker.onchange = "";
+    colorPicker.value = "#ff0000";
+    colorPicker.addEventListener("change", handleButtonClick);
+    page.appendChild(colorPicker);
 
 // Initialize the page by constructing the color options
 constructOptions(presetButtonColors);
