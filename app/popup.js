@@ -3,17 +3,18 @@ let page = document.getElementById("body");
 let selectedClassName = "current";
 const presetButtonColors = [
     {
-        color: "#DEE4E7",
-        icon: "light"
+        color: "#ffffff",
+        icon: "light",
     },
     {
-        color: "#f1ece8",
-        icon: "read-mode"
+        color: "#ded9d6",
+        icon: "read-mode",
     },
     {
-        color: "#37474F",
-        icon: "dark"
-    }];
+        color: "#202125",
+        icon: "dark",
+    },
+];
 
 // When the button is clicked, inject setPageBackgroundColor into current page
 async function setBgColor() {
@@ -73,13 +74,13 @@ function setPageBackgroundColor() {
     });
 }
 
-    let colorPicker = document.createElement("input");
-    colorPicker.type = "color";
-    colorPicker.id = "html5colorpicker";
-    colorPicker.onchange = "";
-    colorPicker.value = "#ff0000";
-    colorPicker.addEventListener("change", handleButtonClick);
-    page.appendChild(colorPicker);
+let colorPicker = document.createElement("input");
+colorPicker.type = "color";
+colorPicker.id = "html5colorpicker";
+colorPicker.onchange = "";
+colorPicker.value = "#ff0000";
+colorPicker.addEventListener("change", handleButtonClick);
+page.appendChild(colorPicker);
 
 // Initialize the page by constructing the color options
 constructOptions(presetButtonColors);
